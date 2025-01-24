@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Baba Yaga - Najlepszy Napój Energetyczny i Saga Wszechczasów</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <style>
+        .countdown {
+            font-size: 1.5rem;
+            color: #ff0000;
+            margin-top: 1rem;
+        }
+        .product-section {
+            text-align: center;
+            margin: 2rem 0;
+        }
+        .product-section img {
+            max-width: 100%;
+            height: auto;
+        }
+        .button {
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <nav class="container-fluid">
+        <ul>
+            <li><strong>BabaYaga.com</strong></li>
+        </ul>
+        <ul>
+            <li><a href="#">Oferta</a></li>
+            <li><a href="#">Produkty</a></li>
+            <li><a href="#" role="button">Kontakt</a></li>
+        </ul>
+    </nav>
+    <main class="container">
+        <div class="grid">
+            <section>
+                <hgroup>
+                    <h2>Baba Yaga</h2>
+                    <h3>Energia, która zmienia świat</h3>
+                </hgroup>
+                <p>
+                    Odkryj moc napoju energetycznego Baba Yaga, który dostarcza niesamowitej energii i inspiruje Cię do działania. Dołącz do naszej epickiej przygody z sagą Baba Yaga.
+                </p>
+                <figure>
+                    <img src="https://source.unsplash.com/600x400/?energy" alt="Napój energetyczny Baba Yaga">
+                    <figcaption><a href="https://unsplash.com" target="_blank">Zdjęcie z Unsplash</a></figcaption>
+                </figure>
+                <h3>Ekskluzywna Promocja</h3>
+                <p>Skorzystaj z wyjątkowej oferty już teraz! Tylko przez ograniczony czas!</p>
+                <div class="countdown" id="countdown"></div>
+                <h3>Świat Baba Yaga</h3>
+                <p>Przeżyj epicką sagę Baba Yaga, która podbija serca czytelników na całym świecie.</p>
+            </section>
+        </div>
+    </main>
+    <section aria-label="Subscribe example">
+        <div class="container">
+            <article>
+                <hgroup>
+                    <h2>Zapisz się na nasz newsletter</h2>
+                    <h3>Nie przegap nowych ofert i promocji</h3>
+                </hgroup>
+                <form class="grid">
+                    <input type="text" id="firstname" name="firstname" placeholder="Twoje imię" aria-label="Imię" required />
+                    <input type="email" id="email" name="email" placeholder="Twój email" aria-label="Email" required />
+                    <button type="submit" onclick="event.preventDefault()">Zapisz się</button>
+                </form>
+            </article>
+        </div>
+    </section>
+    <footer class="container">
+        <small><a href="#">Polityka Prywatności</a> • <a href="#">Regulamin</a></small>
+    </footer>
+    <script>
+        // Timer countdown
+        function startCountdown() {
+            const endTime = new Date().getTime() + 24 * 60 * 60 * 1000; // 24-hour countdown
+            const countdownElement = document.getElementById('countdown');
+
+            function updateCountdown() {
+                const now = new Date().getTime();
+                const distance = endTime - now;
+
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                countdownElement.textContent = `Oferta kończy się za: ${hours}h ${minutes}m ${seconds}s`;
+
+                if (distance < 0) {
+                    clearInterval(interval);
+                    countdownElement.textContent = "Oferta zakończona.";
+                }
+            }
+
+            const interval = setInterval(updateCountdown, 1000);
+        }
+
+        startCountdown();
+    </script>
+</body>
+</html>
